@@ -1,0 +1,569 @@
+1. What is VCS (Version Control System)?
+
+Version Control System (VCS) is a tool used to track changes in files and source code over time.
+
+Before VCS, developers used to store multiple copies of the same project.
+
+Example:
+
+Project_Final
+Project_Final_New
+Project_Final_Latest
+Project_Final_Updated
+
+After a few days nobody knows which file is correct.
+
+To solve this problem, VCS was introduced.
+
+Benefits
+Tracks every change
+Multiple developers can work together
+Easy rollback
+Maintains history
+Backup of source code
+Real-Time Example
+
+In Amazon project, 20 developers work on same application.
+
+Without VCS → Code conflict.
+
+With Git → Every change is tracked.
+
+2. Centralized vs Distributed VCS
+Centralized VCS
+
+Examples:
+
+SVN
+CVS
+
+Architecture:
+
+Developer
+    |
+Developer ---- Server
+    |
+Developer
+
+Everything is stored in one central server.
+
+Disadvantages
+Server failure = project inaccessible
+Internet required
+Single point of failure
+Distributed VCS
+
+Example:
+
+Git
+
+Architecture:
+
+Developer A
+Developer B
+Developer C
+
+Everyone has full copy
+Advantages
+Work offline
+Faster
+More secure
+No dependency on central server
+
+Git is Distributed VCS.
+
+3. What is Git?
+
+Git is an Open Source Distributed Version Control System created by
+
+Linus Torvalds in 2005.
+
+Git helps developers:
+
+Store code
+Track changes
+Create branches
+Merge code
+Rollback code
+Real-Time Example
+
+Imagine you changed Login functionality.
+
+If bug occurs after deployment:
+
+Git allows returning to previous stable version.
+
+4. Git Repositories
+
+Repository (Repo) = Storage location of project code.
+
+Types
+Local Repository
+
+Stored in your laptop.
+
+git init
+Remote Repository
+
+Stored in GitHub.
+
+GitHub
+GitLab
+Bitbucket
+Flow
+Developer
+   ↓
+Local Repo
+   ↓
+Remote Repo (GitHub)
+5. Versioning with Git
+
+Versioning means maintaining versions of software.
+
+Example:
+
+Version 1.0
+Version 1.1
+Version 1.2
+Version 2.0
+Why?
+
+Suppose release 2.0 has bug.
+
+You can rollback to 1.2.
+
+Git Stores
+Commit 1
+Commit 2
+Commit 3
+Commit 4
+
+Every commit acts like a checkpoint.
+
+6. What is GitHub?
+
+GitHub is a cloud platform used to host Git repositories.
+
+Think:
+
+Git = Tool
+GitHub = Storage Platform
+Uses
+Store code online
+Team collaboration
+Pull Requests
+CI/CD Integration
+Open Source Projects
+Real Example
+
+Most companies store source code in GitHub.
+
+Developer
+   ↓
+Git
+   ↓
+1. What is VCS (Version Control System)?
+
+Version Control System (VCS) is a tool used to track changes in files and source code over time.
+
+Before VCS, developers used to store multiple copies of the same project.
+
+Example:
+
+Project_Final
+Project_Final_New
+Project_Final_Latest
+Project_Final_Updated
+
+After a few days nobody knows which file is correct.
+
+To solve this problem, VCS was introduced.
+
+Benefits
+Tracks every change
+Multiple developers can work together
+Easy rollback
+Maintains history
+Backup of source code
+Real-Time Example
+
+In Amazon project, 20 developers work on same application.
+
+Without VCS → Code conflict.
+
+With Git → Every change is tracked.
+
+2. Centralized vs Distributed VCS
+Centralized VCS
+
+Examples:
+
+SVN
+CVS
+
+Architecture:
+
+Developer
+    |
+Developer ---- Server
+    |
+Developer
+
+Everything is stored in one central server.
+
+Disadvantages
+Server failure = project inaccessible
+Internet required
+Single point of failure
+Distributed VCS
+
+Example:
+
+Git
+
+Architecture:
+
+Developer A
+Developer B
+Developer C
+
+Everyone has full copy
+Advantages
+Work offline
+Faster
+More secure
+No dependency on central server
+
+Git is Distributed VCS.
+
+3. What is Git?
+
+Git is an Open Source Distributed Version Control System created by
+
+Linus Torvalds in 2005.
+
+Git helps developers:
+
+Store code
+Track changes
+Create branches
+Merge code
+Rollback code
+Real-Time Example
+
+Imagine you changed Login functionality.
+
+If bug occurs after deployment:
+
+Git allows returning to previous stable version.
+
+4. Git Repositories
+
+Repository (Repo) = Storage location of project code.
+
+Types
+Local Repository
+
+Stored in your laptop.
+
+git init
+Remote Repository
+
+Stored in GitHub.
+
+GitHub
+GitLab
+Bitbucket
+Flow
+Developer
+   ↓
+Local Repo
+   ↓
+Remote Repo (GitHub)
+5. Versioning with Git
+
+Versioning means maintaining versions of software.
+
+Example:
+
+Version 1.0
+Version 1.1
+Version 1.2
+Version 2.0
+Why?
+
+Suppose release 2.0 has bug.
+
+You can rollback to 1.2.
+
+Git Stores
+Commit 1
+Commit 2
+Commit 3
+Commit 4
+
+Every commit acts like a checkpoint.
+
+6. What is GitHub?
+
+GitHub is a cloud platform used to host Git repositories.
+
+Think:
+
+Git = Tool
+GitHub = Storage Platform
+Uses
+Store code online
+Team collaboration
+Pull Requests
+CI/CD Integration
+Open Source Projects
+Real Example
+
+Most companies store source code in GitHub.
+
+Developer
+   ↓
+Git
+   ↓
+GitHub
+7. Important Git Concepts
+Repository
+
+Storage location for project.
+
+Commit
+
+Snapshot of code.
+
+git commit -m "Added login feature"
+Branch
+
+Separate copy of code.
+
+Main Branch
+     |
+Feature Branch
+
+Used for new development.
+
+Merge
+
+Combine branch changes.
+
+git merge feature-login
+Clone
+
+Download repository.
+
+git clone URL
+Push
+
+Upload code.
+
+git push
+Pull
+
+Download latest changes.
+
+git pull
+8. Branches
+
+Branch is one of the most important Git concepts.
+
+Without Branch:
+
+Everyone modifies Main code
+
+High risk.
+
+With Branch:
+
+Main
+ ├── Login Branch
+ ├── Payment Branch
+ └── Search Branch
+
+Developers work independently.
+
+Create Branch
+git branch feature-login
+
+Switch Branch
+
+git checkout feature-login
+
+Or
+
+git switch feature-login
+9. Rollback
+
+Rollback means going back to previous working version.
+
+Check History
+git log
+Rollback
+git revert commit-id
+
+or
+
+git reset
+Real-Time Example
+
+Production issue after deployment.
+
+DevOps Engineer immediately rolls back.
+
+Application starts working again.
+
+10. Git SSH Login
+
+Normally GitHub asks authentication.
+
+SSH avoids entering username/password repeatedly.
+
+Generate SSH Key
+ssh-keygen -t rsa -b 4096
+Copy Key
+cat ~/.ssh/id_rsa.pub
+Add to GitHub
+
+GitHub → Settings → SSH Keys
+
+Paste key.
+
+Test
+ssh -T git@github.com
+11. Git Tags
+
+Tag = Marking important versions.
+
+Example:
+
+v1.0
+v2.0
+v3.0
+Create Tag
+git tag v1.0
+Push Tag
+git push origin v1.0
+Real Example
+
+Application release.
+
+v1.0 Initial Release
+v2.0 Payment Module
+v3.0 Dashboard
+12. Semantic Versioning
+
+Industry Standard Versioning.
+
+Format:
+
+MAJOR.MINOR.PATCH
+
+Example:
+
+1.0.0
+Major
+
+Breaking changes.
+
+1.0.0 → 2.0.0
+Minor
+
+New feature.
+
+1.1.0 → 1.2.0
+Patch
+
+Bug fix.
+
+1.0.1 → 1.0.2
+Example
+1.0.0 Initial Release
+1.1.0 Added Login
+1.1.1 Fixed Login Bug
+2.0.0 Complete UI Change
+13. GitHub Copilot
+
+GitHub Copilot is an AI coding assistant developed by
+
+GitHub and OpenAI.
+
+Features
+Suggests code
+Generates functions
+Explains code
+Creates test cases
+Improves productivity
+Example
+
+You type:
+
+function calculateSum(a,b)
+
+Copilot automatically suggests:
+
+{
+ return a+b;
+}
+Real-Time Use
+
+DevOps Engineers use Copilot for:
+
+Shell Scripts
+Dockerfiles
+Jenkins Pipelines
+Terraform Code
+Kubernetes YAML Files
+----------------------------------------------------------------
+Most Important Interview Questions
+Git
+What is Git?
+Difference between Git and GitHub?
+What is Commit?
+What is Branch?
+What is Merge?
+What is Clone?
+What is Pull and Push?
+GitHub
+What is GitHub?
+What is Pull Request?
+What is SSH Authentication?
+DevOps
+Why Git is important in DevOps?
+Explain Git workflow.
+How do you rollback code?
+What is Semantic Versioning?
+----------------------------------------------------------------
+Commands You Must Remember
+git init
+git clone
+git status
+git add .
+git commit -m "message"
+git push
+git pull
+git branch
+git checkout
+git merge
+git log
+git tag
+
+
+Git Workflow
+Working Directory
+       ↓
+git add
+       ↓
+Staging Area
+       ↓
+git commit
+       ↓
+Local Repository
+       ↓
+git push
+       ↓
+GitHub Repository
+
