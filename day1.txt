@@ -1,0 +1,386 @@
+Day 1: Introduction to DevOps, SDLC, Agile & Scrum
+
+Today is the foundation day. If you understand Day 1 properly, the rest of DevOps will make much more sense.
+
+1. Beginner Explanation
+
+Before understanding DevOps, let's understand how software is built.
+
+Suppose Swiggy wants to introduce a new feature:
+
+"Live Order Tracking"
+
+Can a developer directly write code and make it available to all users?
+
+No.
+
+There is a process followed by every company.
+
+This process is called SDLC (Software Development Life Cycle).
+  
+Requirement
+    ↓
+Design
+    ↓
+Development
+    ↓
+Testing
+    ↓
+Deployment
+    ↓
+Maintenance
+
+DevOps helps automate and speed up this entire process.
+
+2. Why It Is Needed
+
+Before DevOps:
+
+Developer Team
+      ↓
+Operations Team
+
+Problems:
+
+Releases took weeks
+Manual deployments
+Frequent failures
+Downtime during releases
+Blame game between teams
+
+Example:
+
+Developer says:
+
+"My code is working."
+
+Operations team says:
+
+"Application is not working on server."
+
+Nobody knows where the issue is.
+
+3. How It Works
+
+DevOps combines Development and Operations.
+
+Developer
+    ↓
+Build
+    ↓
+Test
+    ↓
+Deploy
+    ↓
+Monitor
+
+Everything becomes automated.
+
+Real DevOps Flow:
+Developer
+GitHub
+    ↓
+Jenkins
+    ↓
+Docker
+    ↓
+Kubernetes
+    ↓
+    ↓
+
+These are the tools you'll learn in the coming days.
+
+
+Imagine Netflix developers create a new recommendation feature.
+Without DevOps:
+
+Code Completed
+      ↓
+      ↓
+Manual Testing
+      ↓
+
+With DevOps:
+
+Code Push
+    ↓
+    ↓
+Automatic Deployment
+    ↓
+Production
+Users get features faster.
+
+5. Real Project Implementation
+
+
+A developer changes the payment service.
+Traditional Process:
+
+Developer
+    ↓
+Email Operations Team
+    ↓
+Operations Deploys
+Issues Found
+
+DevOps Process:
+
+Developer
+Git Push
+    ↓
+Jenkins Pipeline
+    ↓
+Testing
+    ↓
+Deployment
+
+As a DevOps Engineer, your responsibility is:
+
+Automate deployments
+Maintain AWS infrastructure
+Monitor applications
+Reduce downtime
+6. What Problem It Solves
+
+DevOps solves:
+
+Slow Releases
+
+Before:
+
+Release Every Month
+
+After:
+
+Release Multiple Times Per Day
+Human Errors
+
+Manual deployment:
+
+Copy Files
+Restart Server
+Update Config
+
+Mistakes happen.
+
+Automation removes most mistakes.
+
+Downtime
+
+DevOps reduces production outages.
+
+7. What Happens If We Don't Use It
+
+Imagine Flipkart during Big Billion Days.
+
+Without DevOps:
+
+Heavy Traffic
+      ↓
+Server Crash
+      ↓
+Sales Lost
+
+No automation.
+
+No monitoring.
+
+No scaling.
+
+Result:
+
+Revenue loss
+Customer complaints
+Business impact
+Agile & Scrum
+What is Agile?
+
+Agile is a way of developing software in small pieces instead of building everything at once.
+
+Old Method:
+
+Collect Requirements
+      ↓
+Develop for 1 Year
+      ↓
+Release
+
+Problem:
+
+Users wait too long.
+
+Agile Method
+Feature 1
+   ↓
+Release
+
+Feature 2
+   ↓
+Release
+
+Feature 3
+   ↓
+Release
+
+Users get features faster.
+
+What is Scrum?
+
+Scrum is a framework used to implement Agile.
+
+A team works in short cycles called Sprints.
+
+Usually:
+
+Sprint = 2 Weeks
+
+Example:
+
+Sprint 1:
+
+Login Feature
+
+Sprint 2:
+
+Payment Feature
+
+Sprint 3:
+
+Notifications
+Real Industry Example
+Amazon
+
+Amazon doesn't wait 6 months to release features.
+
+Instead:
+
+Small Change
+     ↓
+Testing
+     ↓
+Deployment
+
+Thousands of small deployments happen every day.
+
+DevOps makes this possible.
+
+Interview Questions
+Q1: What is DevOps?
+
+Answer:
+DevOps is a culture and set of practices that combines Development and Operations to automate software delivery and improve reliability.
+
+Q2: What are the benefits of DevOps?
+Faster releases
+Automation
+Better collaboration
+Reduced downtime
+Improved quality
+Q3: What is SDLC?
+
+Answer:
+
+Software Development Life Cycle.
+
+Stages:
+
+Requirement
+↓
+Design
+↓
+Development
+↓
+Testing
+↓
+Deployment
+↓
+Maintenance
+Scenario-Based Question
+Scenario
+
+Your company deploys applications manually.
+
+Every release causes production issues.
+
+Management wants faster and safer deployments.
+
+Question
+
+What approach would you recommend?
+
+Answer
+
+Implement DevOps practices:
+
+Git for version control
+Jenkins for CI/CD
+Docker for consistency
+Kubernetes for orchestration
+AWS for scalable infrastructure
+Monitoring tools for alerts
+Key Takeaways
+
+✅ SDLC = Process of building software
+
+✅ Agile = Deliver software in small increments
+
+✅ Scrum = Framework used in Agile
+
+✅ DevOps = Development + Operations
+
+✅ Goal of DevOps:
+
+Faster deployments
+Automation
+Reliability
+Scalability
+
+✅ Real DevOps Tools:
+
+Git
+↓
+Jenkins
+↓
+Docker
+↓
+Kubernetes
+↓
+AWS
+↓
+Learn the full form of:
+SDLC
+Scrum
+DevOps
+Draw this diagram on paper:
+Requirement
+Design
+Development
+↓
+Testing
+↓
+Deployment
+"What is DevOps?"
+
+Tomorrow (Day 2) we'll cover Virtual Machines (VMs), Hypervisors, VirtualBox, Linux Installation, and SSH, which are the foundation before AWS EC2.Prepare a 2-minute answer for:
+Maintenance
+↓
+↓
+↓
+Agile
+Monitoring
+Homework (30 Minutes)
+Manage servers
+    ↓
+    ↓
+
+Suppose you work for Swiggy.
+
+Automatic Testing
+Manual Deployment
+Wait 2 Weeks
+
+4. Real-World Example (Netflix)
+Monitoring
+AWS
+    ↓
+
