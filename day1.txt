@@ -1,4 +1,4 @@
-Day 1: Introduction to DevOps, SDLC, Agile & Scrum
+day 1: Introduction to DevOps, SDLC, Agile & Scrum
 
 Today is the foundation day. If you understand Day 1 properly, the rest of DevOps will make much more sense.
 
