@@ -1,0 +1,1146 @@
+Day Notes – Vagrant & Vagrantfile (DevOps)
+Learning Objective
+
+By the end of this session, students should understand:
+
+What is Vagrant?
+Why Vagrant is used in DevOps?
+What is a Vagrantfile?
+How to create and manage Virtual Machines using Vagrant?
+How Vagrant helps Infrastructure Automation?
+1. What is Vagrant?
+Definition
+
+Vagrant is an open-source tool used to create, configure, and manage Virtual Machines automatically.
+
+In simple words:
+
+Vagrant helps us create a complete server environment using code.
+
+Real-Time Problem
+
+Suppose a company has 20 developers.
+
+Developer 1:
+
+Ubuntu 24
+Java 17
+Maven 3.9
+
+Developer 2:
+
+Windows
+Java 11
+
+Developer 3:
+
+Ubuntu 22
+Java 21
+
+Application may work for one developer but fail for another.
+
+This problem is called:
+
+Environment Inconsistency
+Solution
+
+Create the same environment for everyone.
+
+Vagrant helps us do that.
+
+Traditional VM Creation
+
+Without Vagrant:
+
+Install VirtualBox
+Create VM
+Install OS
+Configure Network
+Install Software
+Configure Server
+
+Time consuming.
+
+Using Vagrant
+
+Single command:
+
+vagrant up
+
+Everything is created automatically.
+
+What is Vagrantfile?
+Definition
+
+A Vagrantfile is the configuration file used by Vagrant.
+
+It contains instructions about:
+
+Which Operating System to use
+RAM allocation
+CPU allocation
+Network settings
+Shared folders
+Software installation
+Real-Life Example
+
+Think of Vagrantfile as a blueprint for building a house.
+
+Blueprint
+    ↓
+House
+
+Similarly:
+
+Vagrantfile
+      ↓
+Virtual Machine
+Sample Vagrantfile
+Vagrant.configure("2") do |config|
+
+config.vm.box = "ubuntu/jammy64"
+
+end
+Explanation
+Vagrant.configure("2")
+
+Defines Vagrant configuration version.
+
+Vagrant.configure("2")
+config.vm.box
+
+Specifies the operating system image.
+
+config.vm.box = "ubuntu/jammy64"
+
+Meaning:
+
+Create Ubuntu 22.04 VM
+Vagrant Lifecycle
+Step 1: Initialize
+vagrant init ubuntu/jammy64
+
+Creates:
+
+Vagrantfile
+Step 2: Start VM
+vagrant up
+
+Creates and starts VM.
+
+Step 3: Login to VM
+vagrant ssh
+
+Connects to VM using SSH.
+
+Step 4: Stop VM
+vagrant halt
+
+Stops VM.
+
+Step 5: Restart VM
+vagrant reload
+
+Restarts VM.
+
+Step 6: Delete VM
+vagrant destroy
+
+Deletes VM completely.
+
+Vagrant Architecture
+Developer
+      ↓
+Vagrant
+      ↓
+VirtualBox
+      ↓
+Virtual Machine
+      ↓
+Ubuntu Linux
+Vagrant Box
+What is a Box?
+
+A Box is a preconfigured Operating System image.
+
+Examples:
+
+ubuntu/jammy64
+ubuntu/focal64
+centos/7
+rockylinux/9
+Real Example
+
+Instead of manually installing Ubuntu,
+
+Vagrant downloads:
+
+ubuntu/jammy64
+
+and cr
+Configuring RAM and CPU
+
+Default VM resources are limited.
+
+Example:
+
+config.vm.provider "virtualbox" do |vb|
+
+vb.memory = "2048"
+
+vb.cpus = 2
+
+end
+Explanation
+RAM = 2 GB
+
+CPU = 2 Cores
+Real-Time Example
+
+For Jenkins:
+
+RAM = 4 GB
+
+CPU = 2
+
+recommended.
+
+Vagrant Networking
+Why Networking?
+
+To access applications running inside VM.
+
+Example:
+
+config.vm.network "private_network",
+ip: "192.168.56.10"
+Explanation
+
+Assigns a static IP to VM.
+
+VM IP
+
+192.168.56.10
+Access Website
+http://192.168.56.10
+Synced Folders
+Problem
+
+Code exists on Laptop.
+
+VM cannot see it.
+
+Solution
+
+Shared Folder.
+
+config.vm.synced_folder ".", "/vagrant"
+Flow
+Laptop Folder
+      ↓
+Shared Automatically
+      ↓
+VM Folder
+Real-Time Example
+
+Developer writes code in VS Code.
+
+VM immediately sees the same files.
+
+No manual copy-paste required.
+
+Provisioning
+Definition
+
+Provisioning means automatically installing and configuring software after VM creation.
+
+Without Provisioning
+Create VM
+Install Git
+Install Java
+Install Maven
+Install Docker
+
+Manual work.
+
+With Provisioning
+config.vm.provision "shell", inline: <<-SHELL
+
+apt update
+
+apt install git -y
+
+SHELL
+Result
+vagrant up
+
+VM is created.
+
+Git is installed automatically.
+
+Why Provisioning is Important?
+Manual Setup
+
+100 Servers
+
+100 × Manual Installation
+
+Time consuming.
+
+Automated Setup
+Script
+    ↓
+Run Once
+    ↓
+100 Servers Ready
+
+Automation.
+
+Real DevOps Example
+
+New employee joins company.
+
+Instead of:
+
+Install Java
+Install Maven
+Install Git
+Install Docker
+
+manually,
+
+Company shares:
+
+Vagrantfile
+
+Employee runs:
+
+vagrant up
+
+Environment ready in minutes.
+
+Important Commands
+
+Initialize:
+
+vagrant init
+
+Start:
+
+vagrant up
+
+Login:
+
+vagrant ssh
+
+Stop:
+
+vagrant halt
+
+Restart:
+
+vagrant reload
+
+Delete:
+
+vagrant destroy
+
+Status:
+
+vagrant status
+Interview Questions
+What is Vagrant?
+
+Vagrant is an open-source tool used to create and manage virtual machines using code.
+
+What is a Vagrantfile?
+
+A Vagrantfile is the configuration file used by Vagrant to define VM settings such as OS, CPU, RAM, networking, and provisioning.
+
+What is a Vagrant Box?
+
+A Vagrant Box is a preconfigured operating system image used to create virtual machines.
+
+What is Provisioning?
+
+Provisioning is the process of automatically installing and configuring software on a VM after it is created.
+
+Key Takeaway
+Vagrant
+    ↓
+Vagrantfile
+    ↓
+Create VM
+    ↓
+Configure VM
+    ↓
+Provision Software
+    ↓
+Ready-to-Use Environment
+One-Line Summary
+
+Vagrant is an Infrastructure Automation tool that helps DevOps engineers create identical virtual machines using a Vagrantfile, ensuring consistent environments across all developers and servers.Day Notes – Vagrant & Vagrantfile (DevOps)
+Learning Objective
+
+By the end of this session, students should understand:
+
+What is Vagrant?
+Why Vagrant is used in DevOps?
+What is a Vagrantfile?
+How to create and manage Virtual Machines using Vagrant?
+How Vagrant helps Infrastructure Automation?
+1. What is Vagrant?
+Definition
+
+Vagrant is an open-source tool used to create, configure, and manage Virtual Machines automatically.
+
+In simple words:
+
+Vagrant helps us create a complete server environment using code.
+
+Real-Time Problem
+
+Suppose a company has 20 developers.
+
+Developer 1:
+
+Ubuntu 24
+Java 17
+Maven 3.9
+
+Developer 2:
+
+Windows
+Java 11
+
+Developer 3:
+
+Ubuntu 22
+Java 21
+
+Application may work for one developer but fail for another.
+
+This problem is called:
+
+Environment Inconsistency
+Solution
+
+Create the same environment for everyone.
+
+Vagrant helps us do that.
+
+Traditional VM Creation
+
+Without Vagrant:
+
+Install VirtualBox
+Create VM
+Install OS
+Configure Network
+Install Software
+Configure Server
+
+Time consuming.
+
+Using Vagrant
+
+Single command:
+
+vagrant up
+
+Everything is created automatically.
+
+What is Vagrantfile?
+Definition
+
+A Vagrantfile is the configuration file used by Vagrant.
+
+It contains instructions about:
+
+Which Operating System to use
+RAM allocation
+CPU allocation
+Network settings
+Shared folders
+Software installation
+Real-Life Example
+
+Think of Vagrantfile as a blueprint for building a house.
+
+Blueprint
+    ↓
+House
+
+Similarly:
+
+Vagrantfile
+      ↓
+Virtual Machine
+Sample Vagrantfile
+Vagrant.configure("2") do |config|
+
+config.vm.box = "ubuntu/jammy64"
+
+end
+Explanation
+Vagrant.configure("2")
+
+Defines Vagrant configuration version.
+
+Vagrant.configure("2")
+config.vm.box
+
+Specifies the operating system image.
+
+config.vm.box = "ubuntu/jammy64"
+
+Meaning:
+
+Create Ubuntu 22.04 VM
+Vagrant Lifecycle
+Step 1: Initialize
+vagrant init ubuntu/jammy64
+
+Creates:
+
+Vagrantfile
+Step 2: Start VM
+vagrant up
+
+Creates and starts VM.
+
+Step 3: Login to VM
+vagrant ssh
+
+Connects to VM using SSH.
+
+Step 4: Stop VM
+vagrant halt
+
+Stops VM.
+
+Step 5: Restart VM
+vagrant reload
+
+Restarts VM.
+
+Step 6: Delete VM
+vagrant destroy
+
+Deletes VM completely.
+
+Vagrant Architecture
+Developer
+      ↓
+Vagrant
+      ↓
+VirtualBox
+      ↓
+Virtual Machine
+      ↓
+Ubuntu Linux
+Vagrant Box
+What is a Box?
+
+A Box is a preconfigured Operating System image.
+
+Examples:
+
+ubuntu/jammy64
+ubuntu/focal64
+centos/7
+rockylinux/9
+Real Example
+
+Instead of manually installing Ubuntu,
+
+Vagrant downloads:
+
+ubuntu/jammy64
+
+and creates VM automatically.
+
+Configuring RAM and CPU
+
+Default VM resources are limited.
+
+Example:
+
+config.vm.provider "virtualbox" do |vb|
+
+vb.memory = "2048"
+
+vb.cpus = 2
+
+end
+Explanation
+RAM = 2 GB
+
+CPU = 2 Cores
+Real-Time Example
+
+For Jenkins:
+
+RAM = 4 GB
+
+CPU = 2
+
+recommended.
+
+Vagrant Networking
+Why Networking?
+
+To access applications running inside VM.
+
+Example:
+
+config.vm.network "private_network",
+ip: "192.168.56.10"
+Explanation
+
+Assigns a static IP to VM.
+
+VM IP
+
+192.168.56.10
+Access Website
+http://192.168.56.10
+Synced Folders
+Problem
+
+Code exists on Laptop.
+
+VM cannot see it.
+
+Solution
+
+Shared Folder.
+
+config.vm.synced_folder ".", "/vagrant"
+Flow
+Laptop Folder
+      ↓
+Shared Automatically
+      ↓
+VM Folder
+Real-Time Example
+
+Developer writes code in VS Code.
+
+VM immediately sees the same files.
+
+No manual copy-paste required.
+
+Provisioning
+Definition
+
+Provisioning means automatically installing and configuring software after VM creation.
+
+Without Provisioning
+Create VM
+Install Git
+Install Java
+Install Maven
+Install Docker
+
+Manual work.
+
+With Provisioning
+config.vm.provision "shell", inline: <<-SHELL
+
+apt update
+
+apt install git -y
+
+SHELL
+Result
+vagrant up
+
+VM is created.
+
+Git is installed automatically.
+
+Why Provisioning is Important?
+Manual Setup
+
+100 Servers
+
+100 × Manual Installation
+
+Time consuming.
+
+Automated Setup
+Script
+    ↓
+Run Once
+    ↓
+100 Servers Ready
+
+Automation.
+
+Real DevOps Example
+
+New employee joins company.
+
+Instead of:
+
+Install Java
+Install Maven
+Install Git
+Install Docker
+
+manually,
+
+Company shares:
+
+Vagrantfile
+
+Employee runs:
+
+vagrant up
+
+Environment ready in minutes.
+
+Important Commands
+
+Initialize:
+
+vagrant init
+
+Start:
+
+vagrant up
+
+Login:
+
+vagrant ssh
+
+Stop:
+
+vagrant halt
+
+Restart:
+
+vagrant reload
+
+Delete:
+
+vagrant destroy
+
+Status:
+
+vagrant status
+Interview Questions
+What is Vagrant?
+
+Vagrant is an open-source tool used to create and manage virtual machines using code.
+
+What is a Vagrantfile?
+
+A Vagrantfile is the configuration file used by Vagrant to define VM settings such as OS, CPU, RAM, networking, and provisioning.
+
+What is a Vagrant Box?
+
+A Vagrant Box is a preconfigured operating system image used to create virtual machines.
+
+What is Provisioning?
+
+Provisioning is the process of automatically installing and configuring software on a VM after it is created.
+
+Key Takeaway
+Vagrant
+    ↓
+Vagrantfile
+    ↓
+Create VM
+    ↓
+Configure VM
+    ↓
+Provision Software
+    ↓
+Ready-to-Use Environment
+One-Line Summary
+
+Vagrant is an Infrastructure Automation tool that helps DevOps engineers create identical virtual machines using a Vagrantfile, ensuring consistent environments across all developers and servers.Day Notes – Vagrant & Vagrantfile (DevOps)
+Learning Objective
+
+By the end of this session, students should understand:
+
+What is Vagrant?
+Why Vagrant is used in DevOps?
+What is a Vagrantfile?
+How to create and manage Virtual Machines using Vagrant?
+How Vagrant helps Infrastructure Automation?
+1. What is Vagrant?
+Definition
+
+Vagrant is an open-source tool used to create, configure, and manage Virtual Machines automatically.
+
+In simple words:
+
+Vagrant helps us create a complete server environment using code.
+
+Real-Time Problem
+
+Suppose a company has 20 developers.
+
+Developer 1:
+
+Ubuntu 24
+Java 17
+Maven 3.9
+
+Developer 2:
+
+Windows
+Java 11
+
+Developer 3:
+
+Ubuntu 22
+Java 21
+
+Application may work for one developer but fail for another.
+
+This problem is called:
+
+Environment Inconsistency
+Solution
+
+Create the same environment for everyone.
+
+Vagrant helps us do that.
+
+Traditional VM Creation
+
+Without Vagrant:
+
+Install VirtualBox
+Create VM
+Install OS
+Configure Network
+Install Software
+Configure Server
+
+Time consuming.
+
+Using Vagrant
+
+Single command:
+
+vagrant up
+
+Everything is created automatically.
+
+What is Vagrantfile?
+Definition
+
+A Vagrantfile is the configuration file used by Vagrant.
+
+It contains instructions about:
+
+Which Operating System to use
+RAM allocation
+CPU allocation
+Network settings
+Shared folders
+Software installation
+Real-Life Example
+
+Think of Vagrantfile as a blueprint for building a house.
+
+Blueprint
+    ↓
+House
+
+Similarly:
+
+Vagrantfile
+      ↓
+Virtual Machine
+Sample Vagrantfile
+Vagrant.configure("2") do |config|
+
+config.vm.box = "ubuntu/jammy64"
+
+end
+Explanation
+Vagrant.configure("2")
+
+Defines Vagrant configuration version.
+
+Vagrant.configure("2")
+config.vm.box
+
+Specifies the operating system image.
+
+config.vm.box = "ubuntu/jammy64"
+
+Meaning:
+
+Create Ubuntu 22.04 VM
+Vagrant Lifecycle
+Step 1: Initialize
+vagrant init ubuntu/jammy64
+
+Creates:
+
+Vagrantfile
+Step 2: Start VM
+vagrant up
+
+Creates and starts VM.
+
+Step 3: Login to VM
+vagrant ssh
+
+Connects to VM using SSH.
+
+Step 4: Stop VM
+vagrant halt
+
+Stops VM.
+
+Step 5: Restart VM
+vagrant reload
+
+Restarts VM.
+
+Step 6: Delete VM
+vagrant destroy
+
+Deletes VM completely.
+
+Vagrant Architecture
+Developer
+      ↓
+Vagrant
+      ↓
+VirtualBox
+      ↓
+Virtual Machine
+      ↓
+Ubuntu Linux
+Vagrant Box
+What is a Box?
+
+A Box is a preconfigured Operating System image.
+
+Examples:
+
+ubuntu/jammy64
+ubuntu/focal64
+centos/7
+rockylinux/9
+Real Example
+
+Instead of manually installing Ubuntu,
+
+Vagrant downloads:
+
+ubuntu/jammy64
+
+and creates VM automatically.
+
+Configuring RAM and CPU
+
+Default VM resources are limited.
+
+Example:
+
+config.vm.provider "virtualbox" do |vb|
+
+vb.memory = "2048"
+
+vb.cpus = 2
+
+end
+Explanation
+RAM = 2 GB
+
+CPU = 2 Cores
+Real-Time Example
+
+For Jenkins:
+
+RAM = 4 GB
+
+CPU = 2
+
+recommended.
+
+Vagrant Networking
+Why Networking?
+
+To access applications running inside VM.
+
+Example:
+
+config.vm.network "private_network",
+ip: "192.168.56.10"
+Explanation
+
+Assigns a static IP to VM.
+
+VM IP
+
+192.168.56.10
+Access Website
+http://192.168.56.10
+Synced Folders
+Problem
+
+Code exists on Laptop.
+
+VM cannot see it.
+
+Solution
+
+Shared Folder.
+
+config.vm.synced_folder ".", "/vagrant"
+Flow
+Laptop Folder
+      ↓
+Shared Automatically
+      ↓
+VM Folder
+Real-Time Example
+
+Developer writes code in VS Code.
+
+VM immediately sees the same files.
+
+No manual copy-paste required.
+
+Provisioning
+Definition
+
+Provisioning means automatically installing and configuring software after VM creation.
+
+Without Provisioning
+Create VM
+Install Git
+Install Java
+Install Maven
+Install Docker
+
+Manual work.
+
+With Provisioning
+config.vm.provision "shell", inline: <<-SHELL
+
+apt update
+
+apt install git -y
+
+SHELL
+Result
+vagrant up
+
+VM is created.
+
+Git is installed automatically.
+
+Why Provisioning is Important?
+Manual Setup
+
+100 Servers
+
+100 × Manual Installation
+
+Time consuming.
+
+Automated Setup
+Script
+    ↓
+Run Once
+    ↓
+100 Servers Ready
+
+Automation.
+
+Real DevOps Example
+
+New employee joins company.
+
+Instead of:
+
+Install Java
+Install Maven
+Install Git
+Install Docker
+
+manually,
+
+Company shares:
+
+Vagrantfile
+
+Employee runs:
+
+vagrant up
+
+Environment ready in minutes.
+
+Important Commands
+
+Initialize:
+
+vagrant init
+
+Start:
+
+vagrant up
+
+Login:
+
+vagrant ssh
+
+Stop:
+
+vagrant halt
+
+Restart:
+
+vagrant reload
+
+Delete:
+
+vagrant destroy
+
+Status:
+
+vagrant status
+Interview Questions
+What is Vagrant?
+
+Vagrant is an open-source tool used to create and manage virtual machines using code.
+
+What is a Vagrantfile?
+
+A Vagrantfile is the configuration file used by Vagrant to define VM settings such as OS, CPU, RAM, networking, and provisioning.
+
+What is a Vagrant Box?
+
+A Vagrant Box is a preconfigured operating system image used to create virtual machines.
+
+What is Provisioning?
+
+Provisioning is the process of automatically installing and configuring software on a VM after it is created.
+
+Key Takeaway
+Vagrant
+    ↓
+Vagrantfile
+    ↓
+Create VM
+    ↓
+Configure VM
+    ↓
+Provision Software
+    ↓
+Ready-to-Use Environment
+One-Line Summary
+
+Vagrant is an Infrastructure Automation tool that helps DevOps engineers create identical virtual machines using a Vagrantfile, ensuring consistent environments across all developers and servers.
